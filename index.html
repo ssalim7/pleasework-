@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--
+    Urban Threads–inspired Portfolio — Home (Index)
+    Author: Shaima Salim
+    Notes:
+      • Hand-coded HTML5 + CSS3 + Vanilla JS (no frameworks)
+      • Theme: Burgundy (#7A1F2B) & Charcoal (#1F1F1F) with soft greys
+      • Includes: animated code banner, dark mode toggle, avatar, responsive cards,
+        interactive image "surprises" (confetti + fun message), and accessible markup.
+      • Validate with W3C: https://validator.w3.org/  and https://jigsaw.w3.org/css-validator/
+  -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shaima Salim — Portfolio</title>
@@ -18,7 +28,7 @@
       --text:#111113;
       --muted:#5a5d64;
       --focus:#ffd166;
-      --accent:#b84a59;
+      --accent:#b84a59; /* lighter burgundy tint */
     }
     [data-theme="dark"]{
       --paper:#0d0e10;
@@ -47,6 +57,8 @@
     .btn{appearance:none; border:1px solid var(--smoke); background:var(--paper); color:var(--text); padding:.55rem .8rem; border-radius:999px; cursor:pointer; font-weight:600}
     .btn:hover{border-color:var(--burgundy);}
     .btn-ghost{border-color:transparent; background:transparent}
+
+    /* Animated Code Banner */
     .code-banner{
       position: relative; overflow:hidden; border-radius: 18px; margin: 1rem 0 1.25rem; 
       background: linear-gradient(135deg, color-mix(in oklab, var(--burgundy) 30%, var(--paper)), var(--paper));
@@ -59,6 +71,8 @@
     }
     .code-chip{background: color-mix(in oklab, var(--paper) 65%, var(--burgundy)); border:1px solid var(--smoke); padding:.35rem .6rem; border-radius:10px}
     @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+    /* Hero */
     .hero{display:grid; grid-template-columns: 1.2fr .8fr; gap:1.25rem; align-items:center;}
     .hero-card{
       background:var(--paper); border:1px solid var(--smoke); border-radius:20px; padding:1.25rem; box-shadow: 0 10px 24px rgba(0,0,0,.04);
@@ -66,6 +80,8 @@
     .hero h1{margin:.2rem 0 .5rem; font-size: clamp(1.4rem, 2.4vw + .8rem, 2.25rem);}
     .tag{display:inline-block; font-weight:700; background:var(--burgundy); color:white; padding:.25rem .6rem; border-radius:999px; font-size:.8rem; letter-spacing:.2px}
     .sub{color:var(--muted);}
+
+    /* Sections */
     section{margin-top:2rem}
     .section-title{display:flex; align-items:center; gap:.6rem; font-size:1.1rem; text-transform:uppercase; letter-spacing:.12em; color:var(--burgundy)}
     .grid{display:grid; gap:1rem}
@@ -74,15 +90,23 @@
     .card img{width:100%; height:260px; object-fit:cover; border-radius:12px; border:1px solid var(--smoke); cursor:pointer}
     .list{margin:.4rem 0 0; padding-left:1.1rem}
     .list li{margin:.25rem 0}
+
+    /* Surprise toast */
     .toast{position:fixed; inset:auto 0 1rem 0; margin-inline:auto; width:max-content; max-width:90vw; z-index:60; background:var(--charcoal); color:white; padding:.6rem .9rem; border-radius:12px; transform: translateY(30px); opacity:0; transition: all .3s ease}
     .toast.show{transform: translateY(0); opacity:1}
+
+    /* Confetti */
     .confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:50}
     .piece{position:absolute; width:8px; height:14px; border-radius:2px; opacity:.9; animation: fall 1200ms ease-out forwards}
     @keyframes fall{
       0%{transform: translateY(-10vh) rotate(0deg)}
       100%{transform: translateY(110vh) rotate(720deg)}
     }
+
+    /* Footer */
     footer{margin-top:2.5rem; color:var(--muted); font-size:.95rem}
+
+    /* Responsive */
     @media (max-width: 880px){
       .hero{grid-template-columns:1fr;}
       .two-col{grid-template-columns:1fr}
@@ -106,9 +130,12 @@
       </div>
     </nav>
   </header>
+
   <main class="container">
+    <!-- Animated moving code banner -->
     <div class="code-banner" aria-hidden="true">
       <div class="marquee" id="marquee">
+        <span class=\"code-chip\">welcome to shaima's world ;)</span>
         <span class="code-chip">const role = "Data Analyst";</span>
         <span class="code-chip">let stack = ["HTML5","CSS3","JS","Excel","Python","Power BI"];</span>
         <span class="code-chip">if (curiosity &gt; fear) { learn(); }</span>
@@ -116,6 +143,7 @@
         <span class="code-chip">/* innovation × business × UX */</span>
         <span class="code-chip">for (let skill of stack) growth += practice(skill);</span>
         <span class="code-chip">// Urban Threads energy ✨</span>
+        <!-- duplicate to create seamless loop -->
         <span class="code-chip">const role = "Data Analyst";</span>
         <span class="code-chip">let stack = ["HTML5","CSS3","JS","Excel","Python","Power BI"];</span>
         <span class="code-chip">if (curiosity &gt; fear) { learn(); }</span>
@@ -125,6 +153,8 @@
         <span class="code-chip">// Urban Threads energy ✨</span>
       </div>
     </div>
+
+    <!-- Hero / Intro -->
     <section class="hero" aria-labelledby="intro-title">
       <div class="hero-card">
         <span class="tag">Business Management (Innovation &amp; Technology)</span>
@@ -135,12 +165,14 @@
         <img style="width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid var(--smoke)" src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=1200&auto=format&fit=crop" alt="Abstract burgundy and charcoal shapes" />
       </div>
     </section>
+
+    <!-- Professional Summary -->
     <section id="summary" aria-labelledby="summary-title">
       <h2 class="section-title" id="summary-title">Professional Summary</h2>
       <div class="grid two-col">
         <article class="card">
           <h3>About Me</h3>
-          <p>I study <strong>Business Management with Innovation &amp; Technology</strong>, where I explore how emerging tech supports strategy, data‑driven decision making, and customer experience. Alongside university, I currently work at <strong>Billy’s Bagel</strong>, a fast‑paced local spot that’s big on community.</p>
+          <p>I’m a second-year Business student at the University of Salford with a strong interest in how technology and design can shape better business outcomes. I combine strategic business thinking with practical web development and digital design skills to create ethical, sustainable, and user-friendly online experiences. I’m particularly motivated by projects that promote environmental awareness and social responsibility, and I enjoy turning creative ideas into real, functional solutions that make a positive impact.<\/p>
           <h4>What I do at Billy’s Bagel</h4>
           <ul class="list">
             <li>Coordinate the morning prep list and track low‑stock items into a simple spreadsheet for daily ordering.</li>
@@ -162,6 +194,9 @@
         </figure>
       </div>
     </section>
+
+    <!-- About Me (Placement) -->
+    <section id=\"about-placement\" aria-labelledby=\"
     <section id="interests" aria-labelledby="interests-title">
       <h2 class="section-title" id="interests-title">Interests</h2>
       <div class="grid two-col">
@@ -184,6 +219,8 @@
         </figure>
       </div>
     </section>
+
+    <!-- Future Goals -->
     <section id="goals" aria-labelledby="goals-title">
       <h2 class="section-title" id="goals-title">Future Goals</h2>
       <div class="grid two-col">
@@ -204,13 +241,17 @@
         </figure>
       </div>
     </section>
+
     <footer>
       <p>© <span id="year"></span> Shaima Salim • Theme: <span style="color:var(--burgundy)">Burgundy</span> × <span style="color:var(--charcoal)">Charcoal</span> • <a href="#" style="color:var(--accent)">Back to top</a></p>
     </footer>
   </main>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="confetti" id="confetti" aria-hidden="true"></div>
+
   <script>
+    // ===== Dark Mode Toggle (persists in localStorage) =====
     (function(){
       const saved = localStorage.getItem('theme');
       if(saved){ document.documentElement.setAttribute('data-theme', saved); }
@@ -226,21 +267,28 @@
         update();
       });
     })();
+
+    // ===== Year =====
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Surprise logic (confetti + toast message) =====
     const confettiRoot = document.getElementById('confetti');
     const toast = document.getElementById('toast');
+
     function surprise(message){
+      // Toast
       toast.textContent = message;
       toast.classList.add('show');
       setTimeout(()=>toast.classList.remove('show'), 2200);
+      // Confetti
       const colors = ['#7A1F2B', '#b84a59', '#ffd166', '#1F1F1F', '#eceff4'];
       const count = 80;
       for(let i=0;i<count;i++){
         const el = document.createElement('div');
         el.className = 'piece';
-        const size = Math.random() * 8 + 6;
-        const left = Math.random() * 100;
-        const delay = Math.random() * 300;
+        const size = Math.random() * 8 + 6; // 6-14px
+        const left = Math.random() * 100; // vw
+        const delay = Math.random() * 300; // ms
         el.style.left = left + 'vw';
         el.style.background = colors[Math.floor(Math.random()*colors.length)];
         el.style.width = size + 'px';
@@ -250,6 +298,7 @@
         setTimeout(()=> el.remove(), 1400 + delay);
       }
     }
+
     function bindSurprise(id, msg){
       const img = document.getElementById(id);
       if(!img) return;
@@ -259,9 +308,12 @@
       img.setAttribute('role','button');
       img.setAttribute('aria-label','Click for a surprise');
     }
+
     bindSurprise('img-summary', 'Nice! Business brains with creative flair ✨');
     bindSurprise('img-interests', 'Strong body, sharp mind — keep going! 💪');
     bindSurprise('img-goals', 'Data tells a story — you’re the translator 📊');
+
+    // ===== Accessibility: reduce motion preference =====
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     function updateMotion(){
       document.querySelector('.code-banner .marquee').style.animationPlayState = media.matches ? 'paused' : 'running';
@@ -271,3 +323,4 @@
   </script>
 </body>
 </html>
+
